@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {auth, provider} from "./Config.jsx";
 import { signInWithPopup } from "firebase/auth";
 import Diagnose from './Diagnose.jsx';
-
 // const Hero = () => {
 //   return (
 //     <div className="bg-blue-50 text-center py-20 px-4 md:px-0">
