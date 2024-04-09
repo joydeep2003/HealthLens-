@@ -12,7 +12,6 @@ function App() {
   return (
       <div className="w-full h-screen bg-no-repeat bg-cover" style={{ backgroundColor: 'rgb(11 7 41)' }}>
       <Navbar/>
-      {/* <Carousel/> */}
       <Hero/>
       <About/>
       <Testimonials/>
