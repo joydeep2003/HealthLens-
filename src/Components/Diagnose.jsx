@@ -1,13 +1,6 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from 'react';
 
-function Diagnose() {
-    const logout = () => {
-        localStorage.clear();
-        window.location.reload();
-        window.history.back(); // Redirect to the previous page
-    }
-
+function ImageUploader() {
     const [selectedImage, setSelectedImage] = useState(null);
 
     // Function to handle image selection
@@ -28,24 +21,40 @@ function Diagnose() {
         }
     };
 
-
     return (
-        <div>
-            <h1>Home Page</h1>
-            <button onClick={logout}>Logout</button>
-            <div>
-            <h1>Image Uploader</h1>
+        <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+            <h1 className="text-2xl font-bold mb-4">Image Uploader</h1>
             <form onSubmit={handleSubmit}>
-                <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageChange}
-                />
-                <button type="submit">Upload Image</button>
+                <div className="flex items-center justify-center w-full mb-4">
+                    <label htmlFor="image-upload" className="px-4 py-2 bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-600 transition duration-300 ease-in-out">
+                        Select Image
+                    </label>
+                    <input
+                        id="image-upload"
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={handleImageChange}
+                    />
+                </div>
+                {selectedImage && (
+                    <div className="mb-4">
+                        <img
+                            src={URL.createObjectURL(selectedImage)}
+                            alt="Selected Image"
+                            className="w-full h-auto rounded-md"
+                        />
+                    </div>
+                )}
+                <button
+                    type="submit"
+                    className="w-full py-3 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300 ease-in-out"
+                >
+                    Upload Image
+                </button>
             </form>
-        </div>
         </div>
     );
 }
 
-export default Diagnose;
+export default ImageUploader;
