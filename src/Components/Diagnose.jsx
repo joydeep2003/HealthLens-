@@ -1,23 +1,47 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function ImageUploader() {
+
+    const logout =()=>{
+        localStorage.clear()
+        window.location.reload()
+        history.back()
+    }
+
     const [selectedImage, setSelectedImage] = useState(null);
+    const [message, setMessage] = useState('');
+    const [showResult, setShowResult] = useState(false);
 
     // Function to handle image selection
     const handleImageChange = (event) => {
-        const file = event.target.files[0]; // Get the first selected file
+        const file = event.target.files[0];
         setSelectedImage(file);
     };
 
     // Function to handle form submission
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Do something with the selected image, e.g., upload to server
-        if (selectedImage) {
-            console.log('Selected image:', selectedImage);
-            // Add your logic to upload the image here
-        } else {
+
+        if (!selectedImage) {
             console.log('No image selected');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('img', selectedImage);
+
+        try {
+            const response = await axios.post('/', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+
+            setMessage(response.data.message);
+            setShowResult(true);
+        } catch (error) {
+            console.error('Error uploading image:', error);
         }
     };
 
@@ -53,6 +77,17 @@ function ImageUploader() {
                     Upload Image
                 </button>
             </form>
+
+            {showResult && (
+                <div className="mt-6">
+                    <p className="font-semibold text-lg">Prediction:</p>
+                    <p>{message}</p>
+                </div>
+            )}
+
+        <div>
+            <button onClick={logout}>Logout</button>
+        </div>
         </div>
     );
 }
