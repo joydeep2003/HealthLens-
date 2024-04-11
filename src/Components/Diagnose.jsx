@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function ImageUploader() {
 
-    const logout =()=>{
+    const Logout =()=>{
         localStorage.clear()
         window.location.reload()
         history.back()
@@ -46,48 +46,55 @@ function ImageUploader() {
     };
 
     return (
-        <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
-            <h1 className="text-2xl font-bold mb-4">Image Uploader</h1>
-            <form onSubmit={handleSubmit}>
-                <div className="flex items-center justify-center w-full mb-4">
-                    <label htmlFor="image-upload" className="px-4 py-2 bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-600 transition duration-300 ease-in-out">
-                        Select Image
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+            <div className="bg-white rounded-lg shadow-lg p-8">
+                <h1 className="text-3xl font-bold mb-6 text-center">Image Uploader</h1>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    <label htmlFor="image-upload" className="block w-full mb-4">
+                        <div className="border-4 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-gray-400 transition duration-300 ease-in-out">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto mb-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                            </svg>
+                            <span className="text-gray-500">Select Image</span>
+                            <input
+                                id="image-upload"
+                                type="file"
+                                accept="image/*"
+                                className="hidden"
+                                onChange={handleImageChange}
+                            />
+                        </div>
                     </label>
-                    <input
-                        id="image-upload"
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={handleImageChange}
-                    />
-                </div>
-                {selectedImage && (
-                    <div className="mb-4">
-                        <img
-                            src={URL.createObjectURL(selectedImage)}
-                            alt="Selected Image"
-                            className="w-full h-auto rounded-md"
-                        />
+                    {selectedImage && (
+                        <div className="flex justify-center">
+                            <img
+                                src={URL.createObjectURL(selectedImage)}
+                                alt="Selected Image"
+                                className="max-h-64 rounded-lg"
+                            />
+                        </div>
+                    )}
+                    <button
+                        type="submit"
+                        className="w-full py-3 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out"
+                    >
+                        Upload Image
+                    </button>
+                </form>
+
+                {showResult && (
+                    <div className="mt-6 text-center">
+                        <p className="font-semibold text-lg">Prediction:</p>
+                        <p className="mt-2 text-gray-700">{message}</p>
                     </div>
                 )}
-                <button
-                    type="submit"
-                    className="w-full py-3 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300 ease-in-out"
-                >
-                    Upload Image
-                </button>
-            </form>
 
-            {showResult && (
-                <div className="mt-6">
-                    <p className="font-semibold text-lg">Prediction:</p>
-                    <p>{message}</p>
+                <div className="flex justify-end mt-6">
+                    <button onClick={Logout} className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out">
+                        Logout
+                    </button>
                 </div>
-            )}
-
-        <div>
-            <button onClick={logout}>Logout</button>
-        </div>
+            </div>
         </div>
     );
 }
