@@ -41,17 +41,6 @@ const Testimonials = () => {
           {testimonials.map(testimonial => (
             <div key={testimonial.id} className="px-8 py-6 bg-white rounded-lg shadow-lg">
               <div className="relative">
-                {/* <div className="absolute top-0 left-0 w-12 h-12 bg-blue-500 flex justify-center items-center rounded-full">
-                  <svg className="text-white w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 10a3 3 0 00-3-3H9a3 3 0 00-3 3v4a3 3 0 003 3h6a3 3 0 003-3v-1l3-3z" />
-                  </svg>
-                </div> */}
-                {/* <div className="absolute bottom-0 right-0 w-12 h-12 bg-blue-500 flex justify-center items-center rounded-full">
-                  <svg className="text-white w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </div> */}
               </div>
               <p className="text-lg md:text-xl lg:text-2xl text-gray-800 mb-6">{testimonial.testimonial}</p>
               <p className="text-sm font-bold text-gray-800">{testimonial.name}</p>

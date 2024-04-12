@@ -5,17 +5,17 @@ import Hero from './Components/Hero';
 import About from './Components/About';
 import Testimonials from './Components/Testimonial';
 import Footer from './Components/Footer';
-
-// import Carousel from './Components/Carousel';
+import Diagnose from './Components/Diagnose';
 
 function App() {
   return (
-      <div className="w-full h-screen bg-no-repeat bg-cover" style={{ backgroundColor: 'rgb(11 7 41)' }}>
-      <Navbar/>
-      <Hero/>
-      <About/>
-      <Testimonials/>
-      <Footer/>
+    <div className="w-full h-screen bg-no-repeat bg-cover">
+      <Navbar />
+      <Hero />
+      <About />
+      <Testimonials />
+      <Footer />
+      {/* <Diagnose/> */}
     </div>
   );
 }
