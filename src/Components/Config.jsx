@@ -18,3 +18,4 @@ const auth = getAuth(app)
 const provider = new GoogleAuthProvider();
 
 export {auth, provider};
+export { app };
