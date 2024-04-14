@@ -33,9 +33,9 @@ const Navbar = () => {
         <li className="text-sm md:text-base hover:text-blue-500 transition duration-300 px-4 py-2"><a href="#home">Home</a></li>
         <li className="text-sm md:text-base hover:text-blue-500 transition duration-300 px-4 py-2"><a href="#about">About</a></li>
         <li className="text-sm md:text-base hover:text-blue-500 transition duration-300 px-4 py-2"><a href="#contact">Contact</a></li>
-        <li>
+        {/* <li>
           <button onClick={handleClick} className="text-sm md:text-base border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition duration-300 px-4 py-2 rounded-full">Login</button>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );

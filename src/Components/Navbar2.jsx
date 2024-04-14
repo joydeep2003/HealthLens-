@@ -4,7 +4,7 @@ import React from 'react';
 const Navbar2 = () => {
     return (
         <nav className="backdrop-blur-lg text-white p-4 flex justify-between items-center fixed top-0 w-full z-30 transition duration-300 ease-in-out shadow-md" style={{ height: '70px' }}>
-
+            
             <div className="flex items-center">
                 <img src="/logo.png" alt="HealthLens Logo" className="h-10 mr-3" />
                 <a href="#home" className="text-2xl font-bold hover:text-blue-500 transition duration-300">HealthLens</a>
