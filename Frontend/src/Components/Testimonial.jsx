@@ -7,7 +7,7 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: 'Partha Prati Paul',
+      name: 'Partha Pratim Paul',
       testimonial: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus eget sapien pulvinar eleifend.'
     },
     {

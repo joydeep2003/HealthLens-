@@ -51,7 +51,8 @@ const Hero = () => {
     event.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log('User logged in:', userCredential.user);
+      localStorage.setItem("email",userCredential.user.email)
+      // console.log('User logged in:', userCredential.user.email);
       navigate('/Diagnose');
     } catch (error) {
       alert('Invalid Credentials');
@@ -130,3 +131,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
