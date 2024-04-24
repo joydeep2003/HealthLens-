@@ -53,7 +53,7 @@ def explanation(image):
     # cbar.set_ticklabels(cbar_labels)
     plt.axis('off')
     print("Steps Undergoing 2")
-    plt.savefig('D:\\Projects & Assignments\\Software Engeneering\\testing\\new2\\healthcare\\Frontend\\public\\final_image.png')
+    plt.savefig('D:\\Projects & Assignments\\Software Engeneering\\Main\\healthcare\\Frontend\\public\\final_image.png')
     plt.close()
     print("Steps Undergoing 3")
     return True

@@ -25,3 +25,5 @@ dist-ssr
 *.sw?
 *.h5
 venv/
+final_image.png
+__pycache__
