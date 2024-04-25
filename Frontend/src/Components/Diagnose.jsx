@@ -15,6 +15,7 @@ function ImageUploader() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [message, setMessage] = useState("");
   const [confidence, setConfidence] = useState("");
+  const [prediction, setPrediction] = useState("");
   const [showResult, setShowResult] = useState(false);
 
   const toggleSeverity = async () => {
@@ -70,6 +71,39 @@ function ImageUploader() {
 
     } catch (error) {
       console.error(error);
+      if (error.response) {
+        console.error("Error response:", error.response);
+      }
+    }
+  };
+
+  const handleImagePrediction = async () => {
+    if (!selectedImage) {
+      console.log("No image selected");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", selectedImage);
+
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/predict/",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      setPrediction(
+        `Class: ${
+          response.data.class
+        }, Confidence: ${response.data.confidence.toFixed(2)}`
+      );
+    } catch (error) {
+      console.error("Error predicting image:", error);
       if (error.response) {
         console.error("Error response:", error.response);
       }
